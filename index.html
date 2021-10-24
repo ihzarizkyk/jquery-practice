@@ -8,61 +8,103 @@
 <style>
 	.box{
 		margin: auto;
-		height: 200px;
-		width: 300px;
+		width: 500px;
+		height: 300px;
 		background-color: red;
+	}
+
+	.button{
+		margin: auto;
+		padding: 100px;
 	}
 </style>
 <body>
 
-	<div class="box"></div>
-
-	<br>
-
-	<h1>
-		List Bahan::
-	</h1>
-
-	<ol id="lists"></ol>
+<div class="box">
 	
-	<ul>
-		<li>
-				<button id="btn-fade">
-				Start
-				</button>
-		</li>
-		<li>
-				<button id="btn-append">
-					Append
-				</button>
-		</li>
-		<li>
-				<button id="btn-remove">
-					Remove
-				</button>
-		</li>
-	</ul>
+</div>
+
+
+<div class="button">
+<button id="clc-hide">
+	Click Hide
+</button>
+
+<button id="clc-show">
+	Click Show
+</button>
+
+<button id="fadeIn">
+	FadeIn
+</button>
+
+<button id="fadeOut">
+	FadeOut
+</button>
+
+<button id="fadeTogg">
+	FadeTogg
+</button>
+
+<button id="slideTogg">
+	SlideTogg
+</button>
+
+<button id="callback">
+	Callback
+</button>
+	
+<button id="chain">
+	Chain
+</button>
+
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-
-	var numb = 0;
-
-	$(document).ready(function(){
-
-		$("#btn-fade").click(function(){
-			$(".box").fadeOut("slow").fadeIn(2000)
-		});
-
-		$("#btn-append").click(function() {
-			$("#lists").append("<li>Bahan ke-"+ numb++ + "</li>")
-		})
-
-		$("#btn-remove").click(function() {
-			$("#lists").remove()
-		})
-
+$(document).ready(function(){
+	// selector.event(function{})
+	$("#clc-hide").click(function(){
+		$(".box").hide();
 	});
+
+	$("#clc-show").click(function(){
+		$(".box").show();
+	});
+
+	// effects
+
+	// fadeIn , fadeOut, fadeToggle and slideToggle
+	$("#fadeIn").click(function(){
+		$(".box").fadeIn();
+	});
+
+	$("#fadeOut").click(function(){
+		$(".box").fadeOut();
+	});
+
+	$("#fadeTogg").click(function(){
+		$(".box").fadeToggle();
+	});
+
+	$("#slideTogg").click(function(){
+		$(".box").slideToggle();
+	});
+
+	// Callbacks
+	$("#callback").click(function(){
+		$(".box").slideToggle(function(){
+			$(".box").fadeToggle().css("background","yellow");
+		});
+	});
+
+	// Chaining method jquery(callback).callback().callback()
+	$("#chain").click(function(){
+		$(".box").show().hide().slideToggle().delay(3000).hide();
+	}
+		);
+
+});
 </script>
 </body>
 </html>
