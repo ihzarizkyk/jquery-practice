@@ -17,11 +17,22 @@
 		margin: auto;
 		padding: 100px;
 	}
+
+	h1{
+		font-family: arial;
+		padding: 125px;
+		position: relative;
+		left: 70px;
+		margin: auto;
+		color: white;
+	}
 </style>
 <body>
 
 <div class="box">
-	
+	<h1>
+		Jquery
+	</h1>
 </div>
 
 
@@ -56,6 +67,39 @@
 	
 <button id="chain">
 	Chain
+</button>
+
+<button id="this">
+	THIS
+</button>
+
+<br>
+
+<h2>
+	LIST ITEMS:
+</h2>
+
+<ol>
+	<li id="list1">
+		list 1
+	</li>
+	<li id="list2">
+		list 2
+	</li>
+	<li id="list3">
+		list 3
+	</li>
+	<li id="list4">
+		list 4
+	</li>
+</ol>
+
+<button id="traver">
+	Traversing::
+</button>
+
+<button id="sibling">
+	Siblings::
 </button>
 
 </div>
@@ -103,6 +147,25 @@ $(document).ready(function(){
 		$(".box").show().hide().slideToggle().delay(3000).hide();
 	}
 		);
+
+	// this keyword => event and effect by selection
+	$("#this").click(function(){
+		$(this).css("background","yellow");
+	});
+
+	// traversing => method untuk memilih elemen dalam halaman website
+
+	// nextUntil() => memilih elemen diantara 2 elemen. contoh list1 nextUntil list3 berarti elemen diantara keduanya adalah list2
+	$("#traver").click(function(){
+		$("#list1").nextUntil("#list3").css("background","red");
+	});
+
+	// Siblings => method dari traversing dimana element yang dipilih tidak aka diberi event atau effect, tetapi elemen yang tidak diberi sibling akan terkena effectnya
+
+	$("#sibling").click(function(){
+		$("#list4").siblings().css("color","red");
+	});
+
 
 });
 </script>
